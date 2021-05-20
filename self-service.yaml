@@ -6,6 +6,8 @@ items:
   Cowsay:
     description: |
       Let an ASCII cow say stuff in your terminal!
+    categories:
+      - Misc
     image_url: https://upload.wikimedia.org/wikipedia/commons/8/80/Cowsay_Typical_Output.png
     playbook: playbooks/cowsay.yml
     params:
