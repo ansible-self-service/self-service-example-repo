@@ -1,4 +1,24 @@
+- name: "Check Cowsay Status"
+  tags: status
+  hosts: localhost
+  tasks:
+    - name: Check if cowsay executable in in PATH
+      shell: "which cowsay"
+      register: result
+      ignore_errors: true
+
+    - name: Signal status installed
+      debug:
+        msg: 'ANSIBLE_SELF_SERVICE_STATUS_INSTALLED'
+      when: result.rc == 0
+
+    - name: Signal status not installed
+      debug:
+        msg: 'ANSIBLE_SELF_SERVICE_STATUS_NOT_INSTALLED'
+      when: result.rc != 0
+
 - name: "Install Cowsay"
+  tags: install
   hosts: localhost
   become: true
   roles:
