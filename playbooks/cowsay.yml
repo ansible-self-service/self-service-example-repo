@@ -1,11 +1,12 @@
 - name: "Check Cowsay Status"
   tags: status
   hosts: localhost
+  gather_facts: no
   tasks:
     - name: Check if cowsay executable in in PATH
       shell: "which cowsay"
       register: result
-      ignore_errors: true
+      failed_when: false
 
     - name: Signal status installed
       debug:
@@ -20,6 +21,7 @@
 - name: "Install Cowsay"
   tags: install
   hosts: localhost
+  gather_facts: no
   become: true
   roles:
     - cowsay
