@@ -4,9 +4,10 @@
   gather_facts: no
   tasks:
     - name: Check if cowsay executable in in PATH
-      shell: "which cowsay"
+      command: "which cowsay"
       register: result
       failed_when: false
+      changed_when: false
 
     - name: Signal status installed
       debug:
