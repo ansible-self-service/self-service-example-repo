@@ -2,6 +2,7 @@
   tags: status
   hosts: localhost
   gather_facts: no
+  check_mode: no
   tasks:
     - name: Check if cowsay executable in in PATH
       command: "which cowsay"
@@ -22,7 +23,7 @@
 - name: "Install Cowsay"
   tags: install
   hosts: localhost
-  gather_facts: no
+  gather_facts: yes
   become: true
   roles:
     - cowsay
